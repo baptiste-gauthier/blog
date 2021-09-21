@@ -4,31 +4,18 @@
 
 {% block body %}
 
+{% for article in articles %}
 <article id="article">
-    <h1>Tiiiitre</h1>
+    <h1>{{ article.title }}</h1>
     <div class="content">
-        <img src="https://place-hold.it/400x250" alt="">
-        <div class="metadata"> Ecrit le 21/09/2021 à 14h</div>
-        <p><span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi saepe reprehenderit omnis eos error nobis, nostrum similique! Odit maxime recusandae libero maiores nisi nostrum dolorem laboriosam, deleniti, quia corporis est?</span><span>Itaque et ad magnam rerum natus ipsum quaerat labore unde deserunt alias! Sed omnis ipsa odio laudantium iure provident eaque qui error, perferendis suscipit vel vero! Libero harum molestiae earum.</span></p>
-        <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt enim sapiente quaerat voluptatum ducimus iusto. Consectetur id accusamus libero amet voluptatum qui aliquam nihil vel voluptates provident, dolores, similique laudantium.</span><span>Obcaecati explicabo repellat modi voluptate quia eveniet. Facilis praesentium doloremque nemo, laboriosam cum nesciunt repudiandae? Ducimus magnam qui dolorum, aut, voluptatem id minima fugiat voluptatum esse at rem laborum eligendi.</span></p>
-        <a href="{{ path('blog_show') }}" class="btn btn-primary">Voir plus</a>
+        <img src="{{ article.image }}" alt="">
+        <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i')}}</div>
+        {{ article.content | raw}}
+        <a href="{{ path('blog_show', {'id' : article.id }) }}" class="btn btn-primary">Voir plus</a>
     </div>
 </article>
-<article id="article">
-    <h1>Titre</h1>
-    <img src="https://place-hold.it/400x250" alt="">
-    <div class="metadata"> Ecrit le 21/09/2021 à 14h</div>
-    <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam sapiente tenetur magni necessitatibus asperiores explicabo placeat earum dolores natus quasi cum ut ducimus labore, ipsam eius blanditiis eos nihil omnis!</span><span>Doloribus, iure fugiat at temporibus nisi cum architecto dolorum sed aliquam veniam, ut hic optio perferendis non dolore nam totam molestiae quo libero deleniti? Obcaecati dolorum illum ipsam vel eveniet?</span></p>
-    <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, quia. Illo perferendis asperiores, explicabo unde, illum cum, accusamus porro alias neque iste ut ipsum dolor dolorum ratione quisquam eligendi veniam.</span><span>At commodi error sit vitae est odit dignissimos consequatur vero maiores impedit necessitatibus, consectetur corrupti atque quos fugit, numquam cumque reiciendis iure earum perspiciatis veritatis explicabo distinctio ipsam a! Distinctio.</span></p>
-    <a href="{{ path('blog_show') }}" class="btn btn-primary">Voir plus</a>
-</article>
-<article id="article">
-    <h1>Titre</h1>
-    <img src="https://place-hold.it/400x250" alt="">
-    <div class="metadata"> Ecrit le 21/09/2021 à 14h</div>
-    <p><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ea ad quam vel, sint accusamus ratione a pariatur enim id. Neque hic possimus expedita mollitia quasi placeat, est illum id!</span><span>At fugiat aspernatur nesciunt a quam assumenda cum enim architecto non esse. Quaerat dignissimos aspernatur distinctio earum natus esse, nam vitae excepturi voluptatem accusantium debitis ad, dolore dolor odio aliquam!</span></p>
-    <p><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio natus delectus porro blanditiis, ducimus molestiae optio dolore molestias tenetur minima voluptates sint laudantium nihil hic ipsam perferendis vitae ullam dolor.</span><span>Quod, quasi perferendis. Ipsa autem quam, nulla alias iusto officiis doloremque numquam nemo deserunt deleniti eligendi. Asperiores aliquid consequuntur earum quod, consequatur commodi iste architecto incidunt. Quibusdam beatae reprehenderit doloribus.</span></p>
-    <a href="{{ path('blog_show') }}" class="btn btn-primary">Voir plus</a>
-</article>
+
+{% endfor %}
+
 
 {% endblock %}

@@ -2,11 +2,10 @@
 
 {% block body %}
     <article id="article">
-    <h1>Titre</h1>
-    <img src="https://place-hold.it/400x250" alt="">
-    <div class="metadata"> Ecrit le 21/09/2021 à 14h</div>
-    <p><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ea ad quam vel, sint accusamus ratione a pariatur enim id. Neque hic possimus expedita mollitia quasi placeat, est illum id!</span><span>At fugiat aspernatur nesciunt a quam assumenda cum enim architecto non esse. Quaerat dignissimos aspernatur distinctio earum natus esse, nam vitae excepturi voluptatem accusantium debitis ad, dolore dolor odio aliquam!</span></p>
-    <p><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio natus delectus porro blanditiis, ducimus molestiae optio dolore molestias tenetur minima voluptates sint laudantium nihil hic ipsam perferendis vitae ullam dolor.</span><span>Quod, quasi perferendis. Ipsa autem quam, nulla alias iusto officiis doloremque numquam nemo deserunt deleniti eligendi. Asperiores aliquid consequuntur earum quod, consequatur commodi iste architecto incidunt. Quibusdam beatae reprehenderit doloribus.</span></p>
+    <h1>{{ article.title }}</h1>
+    <img src="{{ article.image }}" alt="">
+    <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }}  à {{ article.createdAt | date('H:i') }}</div>
+    {{ article.content | raw }}
     <hr>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex esse debitis suscipit. Cumque beatae sequi quaerat, nemo incidunt eligendi rerum unde, molestiae distinctio deleniti sapiente eveniet exercitationem sint repudiandae sed. Labore minima odit corrupti consequatur, animi iste aspernatur facilis eos quos accusantium provident autem nemo dignissimos, ullam dolores? Minima, harum.</p>
     <p>Saepe repellendus voluptate doloremque optio praesentium nesciunt asperiores, sapiente ad? Doloremque magnam blanditiis animi sit totam repellat labore architecto vitae doloribus nam, earum reiciendis, laudantium ab sapiente. Minima, explicabo mollitia? Similique nisi, ea numquam maxime consequatur saepe nemo deleniti quidem, soluta a, eaque eius at atque veritatis velit earum beatae.</p>
