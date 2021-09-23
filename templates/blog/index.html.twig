@@ -9,11 +9,12 @@
     <h1>{{ article.title }}</h1>
     <div class="content">
         <img src="{{ article.image }}" alt="">
-        <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i')}}</div>
+        <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i')}} dans la catégorie {{ article.category.title }}</div>
         {{ article.content | raw}}
         <a href="{{ path('blog_show', {'id' : article.id }) }}" class="btn btn-primary">Voir plus</a>
     </div>
 </article>
+
 
 {% endfor %}
 

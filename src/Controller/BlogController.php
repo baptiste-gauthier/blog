@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 // use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -49,11 +50,13 @@ class BlogController extends AbstractController
             $article = new Article() ; 
         }
 
-        $form = $this->createFormBuilder($article)
-                    ->add('title')
-                    ->add('content')
-                    ->add('image')
-                    ->getForm(); 
+        // $form = $this->createFormBuilder($article)
+        //             ->add('title')
+        //             ->add('content')
+        //             ->add('image')
+        //             ->getForm(); 
+
+        $form = $this->createForm(ArticleType::class, $article) ;
 
         $form->handleRequest($request); 
 

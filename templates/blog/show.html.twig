@@ -2,12 +2,27 @@
 
 {% block body %}
     <article id="article">
-    <h1>{{ article.title }}</h1>
-    <img src="{{ article.image }}" alt="">
-    <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }}  à {{ article.createdAt | date('H:i') }}</div>
-    {{ article.content | raw }}
-    <hr>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex esse debitis suscipit. Cumque beatae sequi quaerat, nemo incidunt eligendi rerum unde, molestiae distinctio deleniti sapiente eveniet exercitationem sint repudiandae sed. Labore minima odit corrupti consequatur, animi iste aspernatur facilis eos quos accusantium provident autem nemo dignissimos, ullam dolores? Minima, harum.</p>
-    <p>Saepe repellendus voluptate doloremque optio praesentium nesciunt asperiores, sapiente ad? Doloremque magnam blanditiis animi sit totam repellat labore architecto vitae doloribus nam, earum reiciendis, laudantium ab sapiente. Minima, explicabo mollitia? Similique nisi, ea numquam maxime consequatur saepe nemo deleniti quidem, soluta a, eaque eius at atque veritatis velit earum beatae.</p>
-</article>
+        <h1>{{ article.title }}</h1>
+        <img src="{{ article.image }}" alt="">
+        <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/y') }}  à {{ article.createdAt | date('H:i') }} dans la catégorie {{ article.category.title }}</div>
+        {{ article.content | raw }}
+        <hr>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex esse debitis suscipit. Cumque beatae sequi quaerat, nemo incidunt eligendi rerum unde, molestiae distinctio deleniti sapiente eveniet exercitationem sint repudiandae sed. Labore minima odit corrupti consequatur, animi iste aspernatur facilis eos quos accusantium provident autem nemo dignissimos, ullam dolores? Minima, harum.</p>
+        <p>Saepe repellendus voluptate doloremque optio praesentium nesciunt asperiores, sapiente ad? Doloremque magnam blanditiis animi sit totam repellat labore architecto vitae doloribus nam, earum reiciendis, laudantium ab sapiente. Minima, explicabo mollitia? Similique nisi, ea numquam maxime consequatur saepe nemo deleniti quidem, soluta a, eaque eius at atque veritatis velit earum beatae.</p>
+    </article>
+
+    <section id="commentaires">
+        {% for comment in article.comments %}
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                    {{ comment.author }} (<small> {{ comment.createdAt | date('Y-m-y' )}} à {{ comment.createdAt | date('H:i') }}</small>)
+                </div>
+                <div class="col">
+                    {{ comment.content | raw }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
 {% endblock %}
