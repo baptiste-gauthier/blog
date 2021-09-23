@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 // use Doctrine\DBAL\Types\TextType;
@@ -86,6 +87,7 @@ class BlogController extends AbstractController
      */
     public function show(Article $article) {
         // dd($article); 
+
 
         return $this->render('blog/show.html.twig' ,[
             'article' => $article ]); 
