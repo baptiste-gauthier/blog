@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\ArticleType;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 // use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -86,11 +87,16 @@ class BlogController extends AbstractController
      * @Route("/blog/{id}", name="blog_show")
      */
     public function show(Article $article) {
-        // dd($article); 
+
+        $comment = new Comment() ; 
+
+        $form = $this->createForm(CommentType::class , $comment) ; 
 
 
         return $this->render('blog/show.html.twig' ,[
-            'article' => $article ]); 
+            'article' => $article,
+            'commentForm' => $form->createView() 
+        ]); 
     }
 
 }
